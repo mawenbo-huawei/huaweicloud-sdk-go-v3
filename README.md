@@ -242,6 +242,8 @@ the [CHANGELOG.md](https://github.com/huaweicloud/huaweicloud-sdk-go-v3/blob/mas
 * [7. API Invoker](#7-api-invoker-top)
     * [7.1 Custom request headers](#71-custom-request-headers-top)
     * [7.2 Retry for request](#72-retry-for-request-top)
+* [8. FAQ](#8-faq-top)
+    * [8.1 How to use in Cloud Service Alliance Scenarios](#81-how-to-use-in-cloud-service-alliance-scenarios-top)
 
 ### 1. Client Configuration [:top:](#user-manual-top)
 
@@ -1216,5 +1218,47 @@ func main() {
     } else {
         fmt.Printf("%+v\n", err)
     }
+}
+```
+
+### 8. FAQ [:top:](#user-manual-top)
+ 
+#### 8.1 How to use in Cloud Service Alliance Scenarios [:top:](#user-manual-top)
+
+``` go
+package main
+
+import (
+    "github.com/huaweicloud/huaweicloud-sdk-go-v3/core/auth/basic"
+    "github.com/huaweicloud/huaweicloud-sdk-go-v3/core/config"
+    vpc "github.com/huaweicloud/huaweicloud-sdk-go-v3/services/vpc/v2"
+    "os"
+)
+
+func main() {
+    // Specify the endpoint, take the endpoint of VPC service in region of eu-west-101 for example
+    endpoint := "https://vpc.eu-west-101.myhuaweicloud.com"
+    // Initialize the credentials, you should provide projectId or domainId in this way, take initializing BasicCredentials for example
+    basicAuth, err := basic.NewCredentialsBuilder().
+        WithAk(os.Getenv("HUAWEICLOUD_SDK_AK")).
+        WithSk(os.Getenv("HUAWEICLOUD_SDK_SK")).
+        WithProjectId("{your projectId string}").
+        SafeBuild()
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+
+    // Initialize specified New{Service}Client, take initializing the regional service VPC's VpcClient for example
+    hcClient, err := vpc.VpcClientBuilder().
+        WithEndpoint(endpoint).
+        WithCredential(basicAuth).
+        WithHttpConfig(config.DefaultHttpConfig()).
+        SafeBuild()
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    client := vpc.NewVpcClient(hcClient)
 }
 ```
