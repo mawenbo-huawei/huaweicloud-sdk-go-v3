@@ -241,6 +241,8 @@ func main() {
 * [7. 接口调用器](#7-接口调用器-top)
     * [7.1 自定义请求头](#71-自定义请求头-top)
     * [7.2 请求重试](#72-请求重试-top)
+* [8. FAQ](#8-faq-top)
+    * [8.1 云联盟场景如何调用](#81-云联盟场景如何调用-top)
 
 ### 1. 客户端连接参数 [:top:](#用户手册-top)
 
@@ -1223,5 +1225,47 @@ func main() {
     } else {
         fmt.Printf("%+v\n", err)
     }
+}
+```
+
+### 8. FAQ [:top:](#用户手册-top)
+ 
+#### 8.1 云联盟场景如何调用 [:top:](#用户手册-top)
+
+``` go
+package main
+
+import (
+    "github.com/huaweicloud/huaweicloud-sdk-go-v3/core/auth/basic"
+    "github.com/huaweicloud/huaweicloud-sdk-go-v3/core/config"
+    vpc "github.com/huaweicloud/huaweicloud-sdk-go-v3/services/vpc/v2"
+    "os"
+)
+
+func main() {
+    // 指定终端节点，以 云联盟都柏林节点调用 VPC 服务为例
+    endpoint := "https://vpc.eu-west-101.myhuaweicloud.com"
+    // 初始化客户端认证信息，需要填写相应 projectId/domainId，以初始化 basic.NewCredentialsBuilder() 为例
+    basicAuth, err := basic.NewCredentialsBuilder().
+        WithAk(os.Getenv("HUAWEICLOUD_SDK_AK")).
+        WithSk(os.Getenv("HUAWEICLOUD_SDK_SK")).
+        WithProjectId("{your projectId string}").
+        SafeBuild()
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+
+    // 初始化指定云服务的客户端 New{Service}Client ，以初始化 Region 级服务 VPC 的 NewVpcClient 为例
+    hcClient, err := vpc.VpcClientBuilder().
+        WithEndpoint(endpoint).
+        WithCredential(basicAuth).
+        WithHttpConfig(config.DefaultHttpConfig()).
+        SafeBuild()
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    client := vpc.NewVpcClient(hcClient)
 }
 ```
