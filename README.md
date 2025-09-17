@@ -6,9 +6,9 @@ English | [简体中文](./README_CN.md)
 
 <h1 align="center">Huawei Cloud Go Software Development Kit (Go SDK)</h1>
 
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/huaweicloud/huaweicloud-sdk-go-v3)
-![GitHub Release](https://img.shields.io/github/v/release/huaweicloud/huaweicloud-sdk-go-v3)
-![License](https://img.shields.io/badge/license-Apache--2.0-green)
+[![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/huaweicloud/huaweicloud-sdk-go-v3)](https://go.dev/)
+[![GitHub Release](https://img.shields.io/github/v/release/huaweicloud/huaweicloud-sdk-go-v3)](https://github.com/huaweicloud/huaweicloud-sdk-go-v3/releases)
+[![License](https://img.shields.io/badge/license-Apache--2.0-green)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/huaweicloud/huaweicloud-sdk-go-v3)
 
 The Huawei Cloud Go SDK allows you to easily work with Huawei Cloud services such as Elastic Compute Service (ECS) and
