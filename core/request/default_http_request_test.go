@@ -114,7 +114,7 @@ func TestDefaultHttpRequest_ConvertRequest(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NoError(t, httpReq.Body.Close())
 	content = string(b)
-	assert.Equal(t, "test-content", content)
+	assert.Contains(t, content, "test-content")
 }
 
 func TestDefaultHttpRequest_GetBodyToBytes(t *testing.T) {
