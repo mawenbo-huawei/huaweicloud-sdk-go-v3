@@ -1,18 +1,19 @@
 package request
 
 import (
-	"fmt"
-	"github.com/huaweicloud/huaweicloud-sdk-go-v3/core/auth/signer/algorithm"
-	"github.com/huaweicloud/huaweicloud-sdk-go-v3/core/def"
-	"github.com/huaweicloud/huaweicloud-sdk-go-v3/core/progress"
-	"github.com/stretchr/testify/assert"
-	"io"
-	"io/ioutil"
-	"net/http"
-	"os"
-	"path/filepath"
-	"reflect"
-	"testing"
+    "fmt"
+    "github.com/huaweicloud/huaweicloud-sdk-go-v3/core/auth/signer/algorithm"
+    "github.com/huaweicloud/huaweicloud-sdk-go-v3/core/def"
+    "github.com/huaweicloud/huaweicloud-sdk-go-v3/core/progress"
+    "github.com/stretchr/testify/assert"
+    "io"
+    "io/ioutil"
+    "net/http"
+    "os"
+    "path/filepath"
+    "reflect"
+    "strings"
+    "testing"
 )
 
 type RequestBody struct {
